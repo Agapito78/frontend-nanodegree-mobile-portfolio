@@ -1,0 +1,31 @@
+{
+  "name": "frontend-nanodegree-mobile-portfolio",
+  "version": "1.0.0",
+  "description": "Udacity Site Optimization",
+  "main": "index.html",
+  "dependencies": {
+    "gulp-clean-css": "^3.4.0",
+    "gulp-concat": "^2.6.1"
+  },
+  "devDependencies": {
+    "gulp-clean-css": "^3.4.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Agapito78/frontend-nanodegree-mobile-portfolio.git"
+  },
+  "keywords": [
+    "udacity",
+    "front-end",
+    "JS"
+  ],
+  "author": "Andre C A",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Agapito78/frontend-nanodegree-mobile-portfolio/issues"
+  },
+  "homepage": "https://github.com/Agapito78/frontend-nanodegree-mobile-portfolio#readme"
+}
