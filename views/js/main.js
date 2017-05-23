@@ -14,6 +14,8 @@ http://www.html5rocks.com/en/tutorials/webperformance/usertiming/
 Creator:
 Cameron Pittman, Udacity Course Developer
 cameron *at* udacity *dot* com
+
+Modified by student: Andre C Agapito
 */
 
 // As you may have realized, this website randomly generates pizzas.
@@ -285,6 +287,11 @@ function getNoun(y) {
 var adjectives = ["dark", "color", "whimsical", "shiny", "noisy", "apocalyptic", "insulting", "praise", "scientific"];  // types of adjectives for pizza titles
 var nouns = ["animals", "everyday", "fantasy", "gross", "horror", "jewelry", "places", "scifi"];                        // types of nouns for pizza titles
 
+//function to adjust Opacity of pizzas when scrolling
+var fadeStart=100 // 100px scroll or less will equiv to 1 opacity
+    ,fadeVariation=-1, //used to control fade in/out
+    opacity=80; // set initial opacity
+
 // Generates random numbers for getAdj and getNoun functions and returns a new pizza name
 function generator(adj, noun) {
   var adjectives = getAdj(adj);
@@ -517,22 +524,61 @@ function updatePositions() {
   }
 }
 
-// runs updatePositions on scroll
-window.addEventListener('scroll', updatePositions);
 
-// Generates the sliding pizzas when the page loads.
+// Change opacity of the background pizzas based on scroll position
+function updateOpacity() {
+    var offset = document.body.scrollTop;
+    if( offset<=fadeStart ){
+        opacity=80;
+    }else {
+        if (opacity>=90){
+            fadeVariation=-1;
+        }
+        if (opacity<=0){
+            fadeVariation=1;
+        }
+    }
+    opacity = opacity + (2*fadeVariation);
+    console.log(opacity/100);
+
+
+    frame++;
+    window.performance.mark("mark_start_frame");
+
+    var items = document.querySelectorAll('.mover');
+    for (var i = 0; i < items.length; i++) {
+        items[i].style.opacity = opacity/100;
+    }
+
+    // User Timing API to the rescue again. Seriously, it's worth learning.
+    // Super easy to create custom metrics.
+    window.performance.mark("mark_end_frame");
+    window.performance.measure("measure_frame_duration", "mark_start_frame", "mark_end_frame");
+    if (frame % 10 === 0) {
+        var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
+        logAverageFrame(timesToUpdatePosition);
+    }
+}
+
+// runs updateOpacity on scroll.
+window.addEventListener('scroll', updateOpacity);
+
+//Causing performance issues
+//window.addEventListener('scroll', updatePositions);
+
+// Generates the pizzas in the background with opacity equals to 0.8 when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 50; i++) {
+  for (var i = 1; i < 201; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
-    elem.basicLeft = (i % cols) * s;
+    elem.style.opacity = 0.8;
+    elem.style.left = (((i % cols)* s) + 30) + "px";
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
-  updatePositions();
 });
