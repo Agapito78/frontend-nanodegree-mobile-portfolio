@@ -9,11 +9,21 @@ var concat = require('gulp-concat');
 var cleanCSS = require('gulp-clean-css');
 
 gulp.task('default', function() {
-    return gulp.src("css/*.css")
+    return gulp.src("css/style.css")
         .pipe(cleanCSS({debug: true}, function(details) {
             console.log(details.name + ': ' + details.stats.originalSize);
             console.log(details.name + ': ' + details.stats.minifiedSize);
         }))
         .pipe(concat('style.min.css'))
+        .pipe(gulp.dest('css'));
+});
+
+gulp.task('print-css', function() {
+    return gulp.src("css/print.css")
+        .pipe(cleanCSS({debug: true}, function(details) {
+            console.log(details.name + ': ' + details.stats.originalSize);
+            console.log(details.name + ': ' + details.stats.minifiedSize);
+        }))
+        .pipe(concat('print.min.css'))
         .pipe(gulp.dest('css'));
 });
