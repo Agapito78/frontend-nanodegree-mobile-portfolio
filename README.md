@@ -51,7 +51,7 @@ Below there is a list of changes on HTML and CSS files:
 To optimize views/pizza.html, some changes were performed in views/js/main.js to allow 60 fps. 
 
 * **CAUSE:** A function called ***updatePositions()*** was causing performance issues (too much layout). 
-* **SOLUTION:** A new function called ***updateOpacity()*** was created to avoit "layout" when scrolling and use only "opacity" (Composite). There are many solutions for this scenario.
+* **SOLUTION:** A new function called ***updateOpacity()*** was created to avoid "layout" when scrolling and use only "opacity" (Composite). There are many different solutions for this scenario.
 
 ### Optimization Tips and Tricks
 * [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
