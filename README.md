@@ -70,7 +70,7 @@ Below there is a list of changes on HTML and CSS files:
 
 To optimize views/pizza.html, some changes were performed in views/js/main.js to allow 60 fps. 
 
-* **CAUSE:** A function called ***updatePositions()*** and ***changePizzaSizes()*** were causing performance issues (too much layout). 
+* **CAUSE:** The functions ***updatePositions()*** and ***changePizzaSizes()*** were causing performance issues (too much layout). 
 * **SOLUTION:** Both functions were optimized to avoid "Layout" inside the iteration through pizza elements on the page
 
 ### Optimization Tips and Tricks
