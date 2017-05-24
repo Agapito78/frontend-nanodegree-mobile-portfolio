@@ -7,9 +7,29 @@ Link for this project on [GitHub](https://github.com/udacity/frontend-nanodegree
 
 ### Getting started
 
-To check modified page, please, visit this [link](https://agapito78.github.io/frontend-nanodegree-mobile-portfolio/)
+Please, check below information to run this project. There is an online version published [here](https://agapito78.github.io/frontend-nanodegree-mobile-portfolio/)
 
-#### Part 1: Optimized HTML/CSS elements
+#### Part 1: How to run this project
+
+This project is using Gulp to minify JS and CSS. Check for instructiont to install Gulp [here](http://gulpjs.com/).
+
+After Gulp installation. There are three dependencies that must be installed to run Gulp tasks on this project: gulp-concat, gulp-clean-css and gulp-uglify. Please, check below:
+
+* Installing required Gulp dependencies using NPM.
+
+    ```bash
+    npm install --save-dev gulp-concat
+    npm install gulp-clean-css --save-dev
+    npm install --save-dev gulp-uglify
+    ```
+
+* With dependencies properly installed, execute Gulp commands below in order to minify files.
+    ```bash
+    gulp default
+    gulp print-css
+    gulp js-minify
+    ```
+#### Part 2: Optimized HTML/CSS elements
 
 Below there is a list of changes on HTML and CSS files:
 
@@ -46,12 +66,12 @@ Below there is a list of changes on HTML and CSS files:
     });
     ```
 
-#### Part 2: Optimize Frames per Second in pizza.html
+#### Part 3: Optimize Frames per Second in pizza.html
 
 To optimize views/pizza.html, some changes were performed in views/js/main.js to allow 60 fps. 
 
-* **CAUSE:** A function called ***updatePositions()*** was causing performance issues (too much layout). 
-* **SOLUTION:** A new function called ***updateOpacity()*** was created to avoid "layout" when scrolling and use only "opacity" (Composite). There are many different solutions for this scenario.
+* **CAUSE:** A function called ***updatePositions()*** and ***changePizzaSizes()*** were causing performance issues (too much layout). 
+* **SOLUTION:** Both functions were optimized to avoid "Layout" inside the iteration through pizza elements on the page
 
 ### Optimization Tips and Tricks
 * [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
