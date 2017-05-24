@@ -11,7 +11,7 @@ Please, check below information to run this project. There is an online version 
 
 #### Part 1: How to run this project
 
-This project is using Gulp to minify JS and CSS. Check for instructiont to install Gulp [here](http://gulpjs.com/).
+This project is using Gulp to minify JS and CSS. Check for instructions to install Gulp [here](http://gulpjs.com/).
 
 After Gulp installation. There are three dependencies that must be installed to run Gulp tasks on this project: gulp-concat, gulp-clean-css and gulp-uglify. Please, check below:
 
